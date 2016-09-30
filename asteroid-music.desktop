@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Music
+Name[fr_FR]=Musique
+Categories=Applications;
+Exec=invoker --type=qtcomponents-qt5 /usr/bin/asteroid-music
+Icon=ios-musical-notes-outline
+X-Desktop-File-Install-Version=0.20
