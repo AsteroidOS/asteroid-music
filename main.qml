@@ -17,6 +17,7 @@
 
 import QtQuick 2.4
 import org.asteroid.controls 1.0
+import org.asteroid.utils 1.0
 import org.nemomobile.mpris 1.0
 
 Application {
@@ -28,6 +29,8 @@ Application {
     
     Text {
         id: songLabel
+        visible: btStatus.connected
+        enabled: visible
         color: "white"
         font.pixelSize: parent.height*0.07
         font.bold: true
@@ -47,6 +50,8 @@ Application {
 
     Text {
         id: artistLabel
+        visible: btStatus.connected
+        enabled: visible
         color: "white"
         font.pixelSize: parent.height*0.07
         anchors.right: parent.right
@@ -66,6 +71,8 @@ Application {
 
     IconButton {
         id: previousButton
+        visible: btStatus.connected
+        enabled: visible
         anchors.left: parent.left
         anchors.leftMargin: parent.width/20
         anchors.verticalCenter: parent.verticalCenter
@@ -78,6 +85,8 @@ Application {
 
     IconButton {
         id: playButton
+        visible: btStatus.connected
+        enabled: visible
         anchors.centerIn: parent
         iconSize: parent.width*0.4
         iconName: isPlaying ? "ios-pause" : "ios-play"
@@ -93,6 +102,8 @@ Application {
 
     IconButton {
         id: nextButton
+        visible: btStatus.connected
+        enabled: visible
         anchors.right: parent.right
         anchors.rightMargin: parent.width/20
         anchors.verticalCenter: parent.verticalCenter
@@ -101,6 +112,28 @@ Application {
         iconColor: "white"
         pressedIconColor: "lightgrey"
         onClicked: if (mprisManager.canGoNext) mprisManager.next()
+    }
+
+    BluetoothStatus {
+        id: btStatus
+    }
+
+    Icon {
+        visible: !btStatus.connected
+        color: "white"
+        name: "ios-sync"
+        anchors.top: parent.top
+        anchors.topMargin: Units.dp(16)
+        anchors.horizontalCenter: parent.horizontalCenter
+    }
+
+    Text {
+        visible: !btStatus.connected
+        text: qsTr("<h3>No data</h3>\nSync AsteroidOS with your phone.")
+        color: "white"
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        anchors.centerIn: parent
     }
 }
 
