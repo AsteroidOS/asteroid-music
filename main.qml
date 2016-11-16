@@ -23,6 +23,9 @@ import org.nemomobile.mpris 1.0
 Application {
     id: app
 
+    centerColor: "#31bee7"
+    outerColor: "#052442"
+
     MprisManager { id: mprisManager }
 
     property bool isPlaying: mprisManager.currentService && mprisManager.playbackStatus == Mpris.Playing

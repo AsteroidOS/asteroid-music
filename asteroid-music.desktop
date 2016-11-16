@@ -6,4 +6,5 @@ Name[nl_NL]=Muziek
 Categories=Applications;
 Exec=invoker --type=qtcomponents-qt5 /usr/bin/asteroid-music
 Icon=ios-musical-notes-outline
-X-Desktop-File-Install-Version=0.20
+X-Asteroid-Center-Color=#31bee7
+X-Asteroid-Outer-Color=#052442
