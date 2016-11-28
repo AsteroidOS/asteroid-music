@@ -4,7 +4,7 @@ Name=Music
 Name[fr_FR]=Musique
 Name[nl_NL]=Muziek
 Categories=Applications;
-Exec=invoker --type=qtcomponents-qt5 /usr/bin/asteroid-music
+Exec=invoker --single-instance --type=qtcomponents-qt5 /usr/bin/asteroid-music
 Icon=ios-musical-notes-outline
 X-Asteroid-Center-Color=#31bee7
 X-Asteroid-Outer-Color=#052442
