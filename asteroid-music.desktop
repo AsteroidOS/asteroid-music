@@ -3,6 +3,7 @@ Type=Application
 Name=Music
 Name[fr_FR]=Musique
 Name[nl_NL]=Muziek
+Name[sv_SV]=Musik
 Categories=Applications;
 Exec=invoker --single-instance --type=qtcomponents-qt5 /usr/bin/asteroid-music
 Icon=ios-musical-notes-outline
