@@ -8,7 +8,7 @@
         <source>&lt;h3&gt;No data&lt;/h3&gt;
 Sync AsteroidOS with your phone.</source>
         <translation>&lt;h3&gt;Pas de données&lt;/h3&gt;
-Sync AsteroidOS avec votre téléphone.</translation>
+Synchronisez AsteroidOS avec votre téléphone.</translation>
     </message>
 </context>
 </TS>
