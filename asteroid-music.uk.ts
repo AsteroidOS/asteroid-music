@@ -7,7 +7,8 @@
         <location filename="main.qml" line="135"/>
         <source>&lt;h3&gt;No data&lt;/h3&gt;
 Sync AsteroidOS with your phone.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;h3&gt;Немає даних&lt;/h3&gt;
+Синхронізуйте AsteroidOS з вашим смартфоном.</translation>
     </message>
 </context>
 </TS>
