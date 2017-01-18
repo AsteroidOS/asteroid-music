@@ -1,13 +1,14 @@
 [Desktop Entry]
 Type=Application
 Name=Music
+Name[fa]=آهنگ
 Name[fr]=Musique
 Name[ko]=음악
 Name[nl_NL]=Muziek
 Name[pl]=Muzyka
 Name[pt_BR]=Música
 Name[sv]=Musik
-Name[fa]=آهنگ
+Name[uk]=Музика
 Categories=Applications;
 Exec=invoker --single-instance --type=qtcomponents-qt5 /usr/bin/asteroid-music
 Icon=ios-musical-notes-outline
