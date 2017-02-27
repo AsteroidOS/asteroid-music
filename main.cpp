@@ -18,6 +18,7 @@
 #include <QQuickView>
 #include <QTranslator>
 #include <QGuiApplication>
+#include <QScreen>
 #include <MDeclarativeCache>
 
 Q_DECL_EXPORT int main(int argc, char *argv[])
@@ -27,6 +28,7 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
     QScopedPointer<QQuickView> view(MDeclarativeCache::qQuickView());
     view->setSource(QUrl("qrc:/main.qml"));
     view->setTitle("Music");
-    view->showFullScreen();
+    view->resize(app->primaryScreen()->size());
+    view->show();
     return app->exec();
 }
