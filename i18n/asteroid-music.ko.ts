@@ -2,9 +2,17 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="ko">
 <context>
+    <name>QObject</name>
+    <message>
+        <location filename="asteroid-music.desktop.h" line="5"/>
+        <source>Music</source>
+        <translation>음악</translation>
+    </message>
+</context>
+<context>
     <name>main</name>
     <message>
-        <location filename="main.qml" line="135"/>
+        <location filename="../main.qml" line="147"/>
         <source>&lt;h3&gt;No data&lt;/h3&gt;
 Sync AsteroidOS with your phone.</source>
         <translation>&lt;h3&gt;데이터 없음&lt;/h3&gt; 
