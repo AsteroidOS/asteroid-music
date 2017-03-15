@@ -29,7 +29,7 @@ Application {
     MprisManager { id: mprisManager }
 
     property bool isPlaying: mprisManager.currentService && mprisManager.playbackStatus == Mpris.Playing
-    
+
     Text {
         id: songLabel
         visible: btStatus.connected
@@ -79,7 +79,8 @@ Application {
         anchors.left: parent.left
         anchors.leftMargin: parent.width/20
         anchors.verticalCenter: parent.verticalCenter
-        iconSize: parent.width/5
+        width: parent.width/5
+        height: width
         iconName: "ios-arrow-dropleft"
         iconColor: "white"
         pressedIconColor: "lightgrey"
@@ -91,7 +92,8 @@ Application {
         visible: btStatus.connected
         enabled: visible
         anchors.centerIn: parent
-        iconSize: parent.width*0.4
+        width: parent.width*0.4
+        height: width
         iconName: isPlaying ? "ios-pause" : "ios-play"
         iconColor: "white"
         pressedIconColor: "lightgrey"
@@ -110,7 +112,8 @@ Application {
         anchors.right: parent.right
         anchors.rightMargin: parent.width/20
         anchors.verticalCenter: parent.verticalCenter
-        iconSize: parent.width/5
+        width: parent.width/5
+        height: width
         iconName: "ios-arrow-dropright"
         iconColor: "white"
         pressedIconColor: "lightgrey"
@@ -134,7 +137,6 @@ Application {
     }
     Icon {
         visible: !btStatus.connected
-        size: width
         anchors.fill: noDataBackground
         anchors.margins: parent.height*0.03
         color: "white"
