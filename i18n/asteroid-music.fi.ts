@@ -6,7 +6,7 @@
     <message>
         <location filename="asteroid-music.desktop.h" line="5"/>
         <source>Music</source>
-        <translation type="unfinished"></translation>
+        <translation>Musiikki</translation>
     </message>
 </context>
 <context>
@@ -15,7 +15,8 @@
         <location filename="../main.qml" line="147"/>
         <source>&lt;h3&gt;No data&lt;/h3&gt;
 Sync AsteroidOS with your phone.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;h3&gt;No data&lt;/h3&gt;
+Synkronoi AsteroidOS puhelimeen.</translation>
     </message>
 </context>
 </TS>
