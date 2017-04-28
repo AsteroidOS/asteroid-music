@@ -6,7 +6,7 @@
     <message>
         <location filename="asteroid-music.desktop.h" line="5"/>
         <source>Music</source>
-        <translation type="unfinished"></translation>
+        <translation>Música</translation>
     </message>
 </context>
 <context>
@@ -16,7 +16,7 @@
         <source>&lt;h3&gt;No data&lt;/h3&gt;
 Sync AsteroidOS with your phone.</source>
         <translation>&lt;h3&gt;No hay datos&lt;/h3&gt;
-Sinconiza AsteriodOS con tu teléfono.</translation>
+Sincroniza AsteriodOS con tu teléfono.</translation>
     </message>
 </context>
 </TS>
