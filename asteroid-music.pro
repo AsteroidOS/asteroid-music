@@ -14,7 +14,7 @@ lupdate_only{
 
 # Needed for lupdate
 TRANSLATIONS = i18n/asteroid-music.ca.ts \
-               i18n/asteroid-music.de.ts \
+               i18n/asteroid-music.de_DE.ts \
                i18n/asteroid-music.el.ts \
                i18n/asteroid-music.es.ts \
                i18n/asteroid-music.fa.ts \
@@ -23,7 +23,7 @@ TRANSLATIONS = i18n/asteroid-music.ca.ts \
                i18n/asteroid-music.it.ts \
                i18n/asteroid-music.kab.ts \
                i18n/asteroid-music.ko.ts \
-               i18n/asteroid-music.nl.ts \
+               i18n/asteroid-music.nl_NL.ts \
                i18n/asteroid-music.pl.ts \
                i18n/asteroid-music.pt_BR.ts \
                i18n/asteroid-music.ru.ts \
