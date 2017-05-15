@@ -25,6 +25,10 @@ Q_DECL_EXPORT int main(int argc, char *argv[])
 {
     QScopedPointer<QGuiApplication> app(MDeclarativeCache::qApplication(argc, argv));
 
+    QTranslator translator;
+    translator.load(QLocale(), "asteroid-music", ".", "/usr/share/translations", ".qm");
+    app->installTranslator(&translator);
+
     QScopedPointer<QQuickView> view(MDeclarativeCache::qQuickView());
     view->setSource(QUrl("qrc:/main.qml"));
     view->setTitle("Music");
