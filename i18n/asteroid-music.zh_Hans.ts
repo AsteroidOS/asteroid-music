@@ -15,8 +15,8 @@
         <location filename="../main.qml" line="147"/>
         <source>&lt;h3&gt;No data&lt;/h3&gt;
 Sync AsteroidOS with your phone.</source>
-        <translation>&lt;h3&gt; 1无数据&lt;/h3&gt; 2
-请用您的手机同步。</translation>
+        <translation>&lt;h3&gt;无数据&lt;/h3&gt;
+请用您的手机进行同步。</translation>
     </message>
 </context>
 </TS>
