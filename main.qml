@@ -15,7 +15,7 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.4
+import QtQuick 2.9
 import org.asteroid.controls 1.0
 import org.asteroid.utils 1.0
 import org.nemomobile.mpris 1.0
@@ -35,12 +35,12 @@ Application {
         visible: btStatus.connected
         enabled: visible
         color: "white"
-        font.pixelSize: parent.height*0.07
+        font.pixelSize: Dims.l(7)
         font.bold: true
         anchors.right: parent.right
         anchors.left: parent.left
         anchors.top: parent.top
-        anchors.topMargin: parent.height*0.07
+        anchors.topMargin: Dims.h(7)
 
         text: if (mprisManager.currentService) {
             var titleTag = Mpris.metadataToString(Mpris.Title)
@@ -56,11 +56,11 @@ Application {
         visible: btStatus.connected
         enabled: visible
         color: "white"
-        font.pixelSize: parent.height*0.07
+        font.pixelSize: Dims.l(7)
         anchors.right: parent.right
         anchors.left: parent.left
         anchors.top: songLabel.bottom
-        anchors.topMargin: parent.height*0.01
+        anchors.topMargin: Dims.h(1)
 
         text: if (mprisManager.currentService) {
             var artistTag = Mpris.metadataToString(Mpris.Artist)
@@ -77,9 +77,9 @@ Application {
         visible: btStatus.connected
         enabled: visible
         anchors.left: parent.left
-        anchors.leftMargin: parent.width/20
+        anchors.leftMargin: Dims.iconButtonMargin
         anchors.verticalCenter: parent.verticalCenter
-        width: parent.width/5
+        width: Dims.w(20)
         height: width
         iconName: "ios-arrow-dropleft"
         iconColor: "white"
@@ -92,7 +92,7 @@ Application {
         visible: btStatus.connected
         enabled: visible
         anchors.centerIn: parent
-        width: parent.width*0.4
+        width: Dims.w(40)
         height: width
         iconName: isPlaying ? "ios-pause" : "ios-play"
         iconColor: "white"
@@ -110,9 +110,9 @@ Application {
         visible: btStatus.connected
         enabled: visible
         anchors.right: parent.right
-        anchors.rightMargin: parent.width/20
+        anchors.rightMargin: Dims.iconButtonMargin
         anchors.verticalCenter: parent.verticalCenter
-        width: parent.width/5
+        width: Dims.w(20)
         height: width
         iconName: "ios-arrow-dropright"
         iconColor: "white"
@@ -128,17 +128,17 @@ Application {
         id: noDataBackground
         visible: !btStatus.connected
         anchors.centerIn: parent
-        anchors.verticalCenterOffset: -parent.height*0.13
+        anchors.verticalCenterOffset: -Dims.h(13)
         color: "black"
         radius: width/2
         opacity: 0.2
-        width: parent.height*0.25
+        width: Dims.w(25)
         height: width
     }
     Icon {
         visible: !btStatus.connected
         anchors.fill: noDataBackground
-        anchors.margins: parent.height*0.03
+        anchors.margins: Dims.l(3)
         color: "white"
         name: "ios-sync"
     }
@@ -147,15 +147,15 @@ Application {
         id: noDataText
         visible: !btStatus.connected
         text: qsTr("<h3>No data</h3>\nSync AsteroidOS with your phone.")
-        font.pixelSize: parent.height*0.05
+        font.pixelSize: Dims.l(5)
         color: "white"
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         wrapMode: Text.Wrap
         anchors.left: parent.left; anchors.right: parent.right
-        anchors.leftMargin: parent.width*0.02; anchors.rightMargin: parent.width*0.02
+        anchors.leftMargin: Dims.w(2); anchors.rightMargin: Dims.w(2)
         anchors.verticalCenter: parent.verticalCenter
-        anchors.verticalCenterOffset: parent.height*0.15
+        anchors.verticalCenterOffset: Dims.h(15)
     }
 }
 
