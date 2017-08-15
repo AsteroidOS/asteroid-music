@@ -16,7 +16,7 @@
         <source>&lt;h3&gt;No data&lt;/h3&gt;
 Sync AsteroidOS with your phone.</source>
         <translation>&lt;h3&gt;No hay datos&lt;/h3&gt;
-Sincronizar AsteriodOS con el teléfono.</translation>
+Sincronizar AsteroidOS con el teléfono.</translation>
     </message>
 </context>
 </TS>
