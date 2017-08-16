@@ -30,47 +30,40 @@ Application {
 
     property bool isPlaying: mprisManager.currentService && mprisManager.playbackStatus == Mpris.Playing
 
-    Text {
+    Marquee {
         id: songLabel
         visible: btStatus.connected
-        enabled: visible
         color: "white"
         font.pixelSize: Dims.l(7)
         font.bold: true
-        anchors.right: parent.right
-        anchors.left: parent.left
         anchors.top: parent.top
         anchors.topMargin: Dims.h(7)
+        anchors.horizontalCenter: parent.horizontalCenter
+        height: Dims.h(10)
+        width: Dims.w(60)
 
         text: if (mprisManager.currentService) {
             var titleTag = Mpris.metadataToString(Mpris.Title)
             return (titleTag in mprisManager.metadata) ? mprisManager.metadata[titleTag].toString() : ""
         }
-        width: parent.width
-        elide: Text.ElideRight
-        horizontalAlignment: Text.AlignHCenter
     }
 
-    Text {
+    Marquee {
         id: artistLabel
         visible: btStatus.connected
-        enabled: visible
         color: "white"
         font.pixelSize: Dims.l(7)
-        anchors.right: parent.right
-        anchors.left: parent.left
         anchors.top: songLabel.bottom
         anchors.topMargin: Dims.h(1)
+        anchors.horizontalCenter: parent.horizontalCenter
+        height: Dims.h(10)
+        width: Dims.w(70)
 
         text: if (mprisManager.currentService) {
             var artistTag = Mpris.metadataToString(Mpris.Artist)
             return (artistTag in mprisManager.metadata) ? mprisManager.metadata[artistTag].toString() : ""
         }
-        elide: Text.ElideRight
-        horizontalAlignment: Text.AlignHCenter
     }
-
-
 
     IconButton {
         id: previousButton
