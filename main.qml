@@ -40,7 +40,7 @@ Application {
         anchors.topMargin: Dims.h(7)
         anchors.horizontalCenter: parent.horizontalCenter
         height: Dims.h(10)
-        width: Dims.w(60)
+        width: DeviceInfo.hasRoundScreen ? Dims.w(80) : Dims.w(60)
 
         text: if (mprisManager.currentService) {
             var titleTag = Mpris.metadataToString(Mpris.Title)
@@ -57,7 +57,7 @@ Application {
         anchors.topMargin: Dims.h(1)
         anchors.horizontalCenter: parent.horizontalCenter
         height: Dims.h(10)
-        width: Dims.w(70)
+        width: DeviceInfo.hasRoundScreen ? Dims.w(80) : Dims.w(70)
 
         text: if (mprisManager.currentService) {
             var artistTag = Mpris.metadataToString(Mpris.Artist)
