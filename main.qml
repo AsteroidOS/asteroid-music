@@ -18,7 +18,6 @@
 import QtQuick 2.9
 import org.asteroid.controls 1.0
 import org.asteroid.utils 1.0
-import org.asteroid.utils 1.0
 import org.nemomobile.mpris 1.0
 
 Application {
@@ -41,7 +40,7 @@ Application {
         anchors.topMargin: Dims.h(7)
         anchors.horizontalCenter: parent.horizontalCenter
         height: Dims.h(10)
-        width: DeviceInfo.hasRoundScreen ? Dims.w(80) : Dims.w(60)
+        width: DeviceInfo.hasRoundScreen ? Dims.w(60) : Dims.w(80)
 
         text: if (mprisManager.currentService) {
             var titleTag = Mpris.metadataToString(Mpris.Title)
@@ -58,7 +57,7 @@ Application {
         anchors.topMargin: Dims.h(1)
         anchors.horizontalCenter: parent.horizontalCenter
         height: Dims.h(10)
-        width: DeviceInfo.hasRoundScreen ? Dims.w(80) : Dims.w(70)
+        width: DeviceInfo.hasRoundScreen ? Dims.w(70) : Dims.w(80)
 
         text: if (mprisManager.currentService) {
             var artistTag = Mpris.metadataToString(Mpris.Artist)
