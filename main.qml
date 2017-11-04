@@ -75,8 +75,6 @@ Application {
         width: Dims.w(20)
         height: width
         iconName: "ios-arrow-dropleft"
-        iconColor: "white"
-        pressedIconColor: "lightgrey"
         onClicked: if (mprisManager.canGoPrevious) mprisManager.previous()
     }
 
@@ -88,8 +86,6 @@ Application {
         width: Dims.w(40)
         height: width
         iconName: isPlaying ? "ios-pause" : "ios-play"
-        iconColor: "white"
-        pressedIconColor: "lightgrey"
         onClicked: {
             if (isPlaying && mprisManager.canPause)
                 mprisManager.pause()
@@ -108,8 +104,6 @@ Application {
         width: Dims.w(20)
         height: width
         iconName: "ios-arrow-dropright"
-        iconColor: "white"
-        pressedIconColor: "lightgrey"
         onClicked: if (mprisManager.canGoNext) mprisManager.next()
     }
 
@@ -132,7 +126,6 @@ Application {
         visible: !btStatus.connected
         anchors.fill: noDataBackground
         anchors.margins: Dims.l(3)
-        color: "white"
         name: "ios-sync"
     }
 
