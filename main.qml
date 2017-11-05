@@ -68,12 +68,7 @@ Application {
     IconButton {
         id: previousButton
         visible: btStatus.connected
-        enabled: visible
-        anchors.left: parent.left
-        anchors.leftMargin: Dims.iconButtonMargin
-        anchors.verticalCenter: parent.verticalCenter
-        width: Dims.w(20)
-        height: width
+        edge: Qt.LeftEdge
         iconName: "ios-arrow-dropleft"
         onClicked: if (mprisManager.canGoPrevious) mprisManager.previous()
     }
@@ -81,7 +76,7 @@ Application {
     IconButton {
         id: playButton
         visible: btStatus.connected
-        enabled: visible
+        edge: undefinedEdge
         anchors.centerIn: parent
         width: Dims.w(40)
         height: width
@@ -97,12 +92,7 @@ Application {
     IconButton {
         id: nextButton
         visible: btStatus.connected
-        enabled: visible
-        anchors.right: parent.right
-        anchors.rightMargin: Dims.iconButtonMargin
-        anchors.verticalCenter: parent.verticalCenter
-        width: Dims.w(20)
-        height: width
+        edge: Qt.RightEdge
         iconName: "ios-arrow-dropright"
         onClicked: if (mprisManager.canGoNext) mprisManager.next()
     }
