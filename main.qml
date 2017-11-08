@@ -33,8 +33,6 @@ Application {
     Marquee {
         id: songLabel
         visible: btStatus.connected
-        color: "white"
-        font.pixelSize: Dims.l(7)
         font.bold: true
         anchors.top: parent.top
         anchors.topMargin: Dims.h(7)
@@ -51,8 +49,6 @@ Application {
     Marquee {
         id: artistLabel
         visible: btStatus.connected
-        color: "white"
-        font.pixelSize: Dims.l(7)
         anchors.top: songLabel.bottom
         anchors.topMargin: Dims.h(1)
         anchors.horizontalCenter: parent.horizontalCenter
@@ -119,12 +115,11 @@ Application {
         name: "ios-sync"
     }
 
-    Text {
+    Label {
         id: noDataText
         visible: !btStatus.connected
         text: qsTr("<h3>No data</h3>\nSync AsteroidOS with your phone.")
         font.pixelSize: Dims.l(5)
-        color: "white"
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         wrapMode: Text.Wrap
