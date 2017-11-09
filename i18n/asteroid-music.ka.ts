@@ -6,7 +6,7 @@
     <message>
         <location filename="asteroid-music.desktop.h" line="5"/>
         <source>Music</source>
-        <translation></translation>
+        <translation>მუსიკა</translation>
     </message>
 </context>
 <context>
