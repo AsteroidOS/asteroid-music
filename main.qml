@@ -33,14 +33,12 @@ Application {
     Marquee {
         id: songLabel
         visible: btStatus.connected
-        color: "white"
-        font.pixelSize: Dims.l(7)
         font.bold: true
         anchors.top: parent.top
         anchors.topMargin: Dims.h(7)
         anchors.horizontalCenter: parent.horizontalCenter
         height: Dims.h(10)
-        width: DeviceInfo.hasRoundScreen ? Dims.w(80) : Dims.w(60)
+        width: DeviceInfo.hasRoundScreen ? Dims.w(60) : Dims.w(80)
 
         text: if (mprisManager.currentService) {
             var titleTag = Mpris.metadataToString(Mpris.Title)
@@ -51,13 +49,11 @@ Application {
     Marquee {
         id: artistLabel
         visible: btStatus.connected
-        color: "white"
-        font.pixelSize: Dims.l(7)
         anchors.top: songLabel.bottom
         anchors.topMargin: Dims.h(1)
         anchors.horizontalCenter: parent.horizontalCenter
         height: Dims.h(10)
-        width: DeviceInfo.hasRoundScreen ? Dims.w(80) : Dims.w(70)
+        width: DeviceInfo.hasRoundScreen ? Dims.w(70) : Dims.w(80)
 
         text: if (mprisManager.currentService) {
             var artistTag = Mpris.metadataToString(Mpris.Artist)
@@ -68,28 +64,19 @@ Application {
     IconButton {
         id: previousButton
         visible: btStatus.connected
-        enabled: visible
-        anchors.left: parent.left
-        anchors.leftMargin: Dims.iconButtonMargin
-        anchors.verticalCenter: parent.verticalCenter
-        width: Dims.w(20)
-        height: width
+        edge: Qt.LeftEdge
         iconName: "ios-arrow-dropleft"
-        iconColor: "white"
-        pressedIconColor: "lightgrey"
         onClicked: if (mprisManager.canGoPrevious) mprisManager.previous()
     }
 
     IconButton {
         id: playButton
         visible: btStatus.connected
-        enabled: visible
+        edge: undefinedEdge
         anchors.centerIn: parent
         width: Dims.w(40)
         height: width
         iconName: isPlaying ? "ios-pause" : "ios-play"
-        iconColor: "white"
-        pressedIconColor: "lightgrey"
         onClicked: {
             if (isPlaying && mprisManager.canPause)
                 mprisManager.pause()
@@ -101,15 +88,8 @@ Application {
     IconButton {
         id: nextButton
         visible: btStatus.connected
-        enabled: visible
-        anchors.right: parent.right
-        anchors.rightMargin: Dims.iconButtonMargin
-        anchors.verticalCenter: parent.verticalCenter
-        width: Dims.w(20)
-        height: width
+        edge: Qt.RightEdge
         iconName: "ios-arrow-dropright"
-        iconColor: "white"
-        pressedIconColor: "lightgrey"
         onClicked: if (mprisManager.canGoNext) mprisManager.next()
     }
 
@@ -132,16 +112,14 @@ Application {
         visible: !btStatus.connected
         anchors.fill: noDataBackground
         anchors.margins: Dims.l(3)
-        color: "white"
         name: "ios-sync"
     }
 
-    Text {
+    Label {
         id: noDataText
         visible: !btStatus.connected
         text: qsTr("<h3>No data</h3>\nSync AsteroidOS with your phone.")
         font.pixelSize: Dims.l(5)
-        color: "white"
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         wrapMode: Text.Wrap
