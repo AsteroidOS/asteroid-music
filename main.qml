@@ -28,105 +28,75 @@ Application {
 
     MprisManager { id: mprisManager }
 
-    property bool isPlaying: mprisManager.currentService && mprisManager.playbackStatus == Mpris.Playing
+    BluetoothStatus { id: btStatus }
 
-    Marquee {
-        id: songLabel
-        visible: btStatus.connected
-        font.bold: true
-        anchors.top: parent.top
-        anchors.topMargin: Dims.h(7)
-        anchors.horizontalCenter: parent.horizontalCenter
-        height: Dims.h(10)
-        width: DeviceInfo.hasRoundScreen ? Dims.w(60) : Dims.w(80)
-
-        text: if (mprisManager.currentService) {
-            var titleTag = Mpris.metadataToString(Mpris.Title)
-            return (titleTag in mprisManager.metadata) ? mprisManager.metadata[titleTag].toString() : ""
-        }
-    }
-
-    Marquee {
-        id: artistLabel
-        visible: btStatus.connected
-        anchors.top: songLabel.bottom
-        anchors.topMargin: Dims.h(1)
-        anchors.horizontalCenter: parent.horizontalCenter
-        height: Dims.h(10)
-        width: DeviceInfo.hasRoundScreen ? Dims.w(70) : Dims.w(80)
-
-        text: if (mprisManager.currentService) {
-            var artistTag = Mpris.metadataToString(Mpris.Artist)
-            return (artistTag in mprisManager.metadata) ? mprisManager.metadata[artistTag].toString() : ""
-        }
-    }
-
-    IconButton {
-        id: previousButton
-        visible: btStatus.connected
-        edge: Qt.LeftEdge
-        iconName: "ios-arrow-dropleft"
-        onClicked: if (mprisManager.canGoPrevious) mprisManager.previous()
-    }
-
-    IconButton {
-        id: playButton
-        visible: btStatus.connected
-        edge: undefinedEdge
-        anchors.centerIn: parent
-        width: Dims.w(40)
-        height: width
-        iconName: isPlaying ? "ios-pause" : "ios-play"
-        onClicked: {
-            if (isPlaying && mprisManager.canPause)
-                mprisManager.pause()
-            else if (!isPlaying && mprisManager.canPlay)
-                mprisManager.play()
-        }
-    }
-
-    IconButton {
-        id: nextButton
-        visible: btStatus.connected
-        edge: Qt.RightEdge
-        iconName: "ios-arrow-dropright"
-        onClicked: if (mprisManager.canGoNext) mprisManager.next()
-    }
-
-    BluetoothStatus {
-        id: btStatus
-    }
-
-    Rectangle {
-        id: noDataBackground
-        visible: !btStatus.connected
-        anchors.centerIn: parent
-        anchors.verticalCenterOffset: -Dims.h(13)
-        color: "black"
-        radius: width/2
-        opacity: 0.2
-        width: Dims.w(25)
-        height: width
-    }
-    Icon {
-        visible: !btStatus.connected
-        anchors.fill: noDataBackground
-        anchors.margins: Dims.l(3)
-        name: "ios-sync"
-    }
-
-    Label {
-        id: noDataText
-        visible: !btStatus.connected
+    StatusPage {
         text: qsTr("<h3>No data</h3>\nSync AsteroidOS with your phone.")
-        font.pixelSize: Dims.l(5)
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-        wrapMode: Text.Wrap
-        anchors.left: parent.left; anchors.right: parent.right
-        anchors.leftMargin: Dims.w(2); anchors.rightMargin: Dims.w(2)
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.verticalCenterOffset: Dims.h(15)
+        icon: "ios-sync"
+        visible: !btStatus.connected
+    }
+    Item {
+        anchors.fill: parent
+        visible: btStatus.connected
+
+        property bool isPlaying: mprisManager.currentService && mprisManager.playbackStatus == Mpris.Playing
+
+        Marquee {
+            id: songLabel
+            font.bold: true
+            anchors.top: parent.top
+            anchors.topMargin: Dims.h(7)
+            anchors.horizontalCenter: parent.horizontalCenter
+            height: Dims.h(10)
+            width: DeviceInfo.hasRoundScreen ? Dims.w(60) : Dims.w(80)
+
+            text: if (mprisManager.currentService) {
+                var titleTag = Mpris.metadataToString(Mpris.Title)
+                return (titleTag in mprisManager.metadata) ? mprisManager.metadata[titleTag].toString() : ""
+            }
+        }
+
+        Marquee {
+            id: artistLabel
+            anchors.top: songLabel.bottom
+            anchors.topMargin: Dims.h(1)
+            anchors.horizontalCenter: parent.horizontalCenter
+            height: Dims.h(10)
+            width: DeviceInfo.hasRoundScreen ? Dims.w(70) : Dims.w(80)
+
+            text: if (mprisManager.currentService) {
+                var artistTag = Mpris.metadataToString(Mpris.Artist)
+                return (artistTag in mprisManager.metadata) ? mprisManager.metadata[artistTag].toString() : ""
+            }
+        }
+
+        IconButton {
+            id: previousButton
+            edge: Qt.LeftEdge
+            iconName: "ios-arrow-dropleft"
+            onClicked: if (mprisManager.canGoPrevious) mprisManager.previous()
+        }
+
+        IconButton {
+            id: playButton
+            edge: undefinedEdge
+            anchors.centerIn: parent
+            width: Dims.w(40)
+            height: width
+            iconName: isPlaying ? "ios-pause" : "ios-play"
+            onClicked: {
+                if (isPlaying && mprisManager.canPause)
+                    mprisManager.pause()
+                else if (!isPlaying && mprisManager.canPlay)
+                    mprisManager.play()
+            }
+        }
+
+        IconButton {
+            id: nextButton
+            edge: Qt.RightEdge
+            iconName: "ios-arrow-dropright"
+            onClicked: if (mprisManager.canGoNext) mprisManager.next()
+        }
     }
 }
-
