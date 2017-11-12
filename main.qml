@@ -26,6 +26,8 @@ Application {
     centerColor: "#31bee7"
     outerColor: "#052442"
 
+    property bool isPlaying: mprisManager.currentService && mprisManager.playbackStatus == Mpris.Playing
+
     MprisManager { id: mprisManager }
 
     BluetoothStatus { id: btStatus }
@@ -38,8 +40,6 @@ Application {
     Item {
         anchors.fill: parent
         visible: btStatus.connected
-
-        property bool isPlaying: mprisManager.currentService && mprisManager.playbackStatus == Mpris.Playing
 
         Marquee {
             id: songLabel
