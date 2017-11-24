@@ -33,7 +33,8 @@ Application {
     BluetoothStatus { id: btStatus }
 
     StatusPage {
-        text: qsTr("<h3>No data</h3>\nSync AsteroidOS with your phone.")
+        //% "<h3>No data</h3>Sync AsteroidOS with your phone."
+        text: qsTrId("id-no-data-sync")
         icon: "ios-sync"
         visible: !btStatus.connected
     }
