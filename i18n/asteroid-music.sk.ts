@@ -6,12 +6,12 @@
     <message id="id-no-data-sync">
         <location filename="../main.qml" line="37"/>
         <source>&lt;h3&gt;No data&lt;/h3&gt;Sync AsteroidOS with your phone.</source>
-        <translation></translation>
+        <translation>&lt;h3&gt;Žiadne data&lt;/h3&gt;Synchronizujte AsteroidOS s telefónom.</translation>
     </message>
     <message id="id-app-launcher-name">
         <location filename="asteroid-music.desktop.h" line="6"/>
         <source>Music</source>
-        <translation></translation>
+        <translation>Hudba</translation>
     </message>
 </context>
 </TS>
