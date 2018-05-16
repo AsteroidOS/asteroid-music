@@ -11,7 +11,7 @@
     <message id="id-app-launcher-name">
         <location filename="asteroid-music.desktop.h" line="6"/>
         <source>Music</source>
-        <translation>ﺂﻬﻧگ</translation>
+        <translation>موسیقی</translation>
     </message>
 </context>
 </TS>
