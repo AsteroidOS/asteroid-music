@@ -6,7 +6,7 @@
     <message id="id-no-data-sync">
         <location filename="../main.qml" line="37"/>
         <source>&lt;h3&gt;No data&lt;/h3&gt;Sync AsteroidOS with your phone.</source>
-        <translation>&lt;h3&gt;డేటా శూన్యం&lt;/h3&gt;మీ ఫోన్ తో ఆస్టిరోఇడ్ OS తో సింక్ చేయండి.</translation>
+        <translation>AsteroidOS  కి సంబంధించినా ఎటువంటి  సమాచారం మీ ఫోన్ లో లేదు</translation>
     </message>
     <message id="id-app-launcher-name">
         <location filename="asteroid-music.desktop.h" line="6"/>
