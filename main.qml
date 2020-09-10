@@ -27,10 +27,23 @@ Application {
     outerColor: "#052442"
 
     property bool isPlaying: mprisManager.currentService && mprisManager.playbackStatus == Mpris.Playing
+    property double bufferedVolume: 0.0
 
-    MprisManager { id: mprisManager }
+    onBufferedVolumeChanged: mprisManager.volume = bufferedVolume
+
+    MprisManager {
+        id: mprisManager
+        onVolumeChanged: bufferedVolumeTimer.restart()
+    }
 
     BluetoothStatus { id: btStatus }
+
+    Timer {
+        id: bufferedVolumeTimer
+        interval: 500
+        repeat: false
+        onTriggered: bufferedVolume = mprisManager.volume
+    }
 
     StatusPage {
         //% "<h3>No data</h3>Sync AsteroidOS with your phone."
@@ -98,6 +111,50 @@ Application {
             edge: Qt.RightEdge
             iconName: "ios-arrow-dropright"
             onClicked: if (mprisManager.canGoNext) mprisManager.next()
+        }
+
+        IconButton {
+            id: volDownButton
+            edge: undefinedEdge
+            anchors.left: parent.left
+            anchors.leftMargin: Dims.w(16)
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: Dims.h(12)
+            iconName: "ios-volume-down"
+            onClicked: bufferedVolume = Math.max(bufferedVolume - 0.05, 0)
+        }
+
+        Rectangle {
+            id: volumeSlider
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: Dims.h(21)
+            anchors.horizontalCenter: parent.horizontalCenter
+            height: Dims.h(2)
+            width: Dims.w(28)
+            color: "white"
+            opacity: 0.6
+            radius: 12
+        }
+
+        Rectangle {
+            anchors.top: volumeSlider.top
+            anchors.left: volumeSlider.left
+            anchors.bottom: volumeSlider.bottom
+            width: volumeSlider.width * mprisManager.volume
+            color: "white"
+            radius: 12
+            opacity: 1.0
+        }
+
+        IconButton {
+            id: volUpButton
+            edge: undefinedEdge
+            anchors.right: parent.right
+            anchors.rightMargin: Dims.w(16)
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: Dims.h(12)
+            iconName: "ios-volume-up"
+            onClicked: bufferedVolume = Math.min(bufferedVolume + 0.05, 1)
         }
     }
 }
