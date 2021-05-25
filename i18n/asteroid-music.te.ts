@@ -4,7 +4,7 @@
 <context>
     <name></name>
     <message id="id-no-data-sync">
-        <location filename="../main.qml" line="37"/>
+        <location filename="../src/main.qml" line="50"/>
         <source>&lt;h3&gt;No data&lt;/h3&gt;Sync AsteroidOS with your phone.</source>
         <translation>AsteroidOS  కి సంబంధించినా ఎటువంటి  సమాచారం మీ ఫోన్ లో లేదు</translation>
     </message>
