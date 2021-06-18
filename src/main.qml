@@ -51,9 +51,35 @@ Application {
         icon: "ios-sync"
         visible: !btStatus.connected
     }
+
     Item {
         anchors.fill: parent
         visible: btStatus.connected
+
+        Image {
+            id: coverArt
+            anchors.fill: parent
+            fillMode: Image.PreserveAspectCrop
+            opacity: 0.7
+            source: {
+                var artTag = Mpris.metadataToString(Mpris.ArtUrl)
+                if (mprisManager.currentService && (artTag in mprisManager.metadata))
+                    return mprisManager.metadata[artTag]
+                return ""
+            }
+        }
+
+        Rectangle {
+            id: textBackgroundDarkener
+            visible: coverArt.status == Image.Ready
+            anchors.top: parent.top
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.bottom: artistLabel.bottom
+            anchors.bottomMargin: -Dims.h(0.5)
+            color: "black"
+            opacity: 0.5
+        }
 
         Marquee {
             id: songLabel
@@ -64,23 +90,27 @@ Application {
             height: Dims.h(10)
             width: DeviceInfo.hasRoundScreen ? Dims.w(60) : Dims.w(80)
 
-            text: if (mprisManager.currentService) {
+            text: {
                 var titleTag = Mpris.metadataToString(Mpris.Title)
-                return (titleTag in mprisManager.metadata) ? mprisManager.metadata[titleTag].toString() : ""
+                if (mprisManager.currentService && (titleTag in mprisManager.metadata))
+                    return mprisManager.metadata[titleTag]
+                return ""
             }
         }
 
         Marquee {
             id: artistLabel
             anchors.top: songLabel.bottom
-            anchors.topMargin: Dims.h(1)
+            anchors.topMargin: -Dims.h(1)
             anchors.horizontalCenter: parent.horizontalCenter
             height: Dims.h(10)
             width: DeviceInfo.hasRoundScreen ? Dims.w(70) : Dims.w(80)
 
-            text: if (mprisManager.currentService) {
+            text: {
                 var artistTag = Mpris.metadataToString(Mpris.Artist)
-                return (artistTag in mprisManager.metadata) ? mprisManager.metadata[artistTag].toString() : ""
+                if (mprisManager.currentService && (artistTag in mprisManager.metadata))
+                    return mprisManager.metadata[artistTag]
+                return ""
             }
         }
 
