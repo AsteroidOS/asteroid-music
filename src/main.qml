@@ -51,9 +51,32 @@ Application {
         icon: "ios-sync"
         visible: !btStatus.connected
     }
+
     Item {
         anchors.fill: parent
         visible: btStatus.connected
+
+        Image {
+            id: coverArt
+            anchors.fill: parent
+            fillMode: Image.PreserveAspectCrop
+            opacity: 0.7
+            source: if (mprisManager.currentService) {
+                var artTag = Mpris.metadataToString(Mpris.ArtUrl)
+                return (artTag in mprisManager.metadata) ? mprisManager.metadata[artTag] : ""
+            }
+        }
+
+        Rectangle {
+            visible: coverArt.status == Image.Ready
+            anchors.top: parent.top
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.bottom: artistLabel.bottom
+            anchors.bottomMargin: -Dims.h(0.5)
+            color: "black"
+            opacity: 0.5
+        }
 
         Marquee {
             id: songLabel
@@ -73,7 +96,7 @@ Application {
         Marquee {
             id: artistLabel
             anchors.top: songLabel.bottom
-            anchors.topMargin: Dims.h(1)
+            anchors.topMargin: -Dims.h(1)
             anchors.horizontalCenter: parent.horizontalCenter
             height: Dims.h(10)
             width: DeviceInfo.hasRoundScreen ? Dims.w(70) : Dims.w(80)
