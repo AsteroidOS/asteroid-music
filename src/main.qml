@@ -116,14 +116,17 @@ Application {
 
         IconButton {
             id: previousButton
-            edge: Qt.LeftEdge
+            anchors {
+                left: parent.left
+                verticalCenter: parent.verticalCenter
+                leftMargin: Dims.iconButtonMargin
+            }
             iconName: "ios-arrow-dropleft"
             onClicked: if (mprisManager.canGoPrevious) mprisManager.previous()
         }
 
         IconButton {
             id: playButton
-            edge: undefinedEdge
             anchors.centerIn: parent
             width: Dims.w(40)
             height: width
@@ -138,14 +141,17 @@ Application {
 
         IconButton {
             id: nextButton
-            edge: Qt.RightEdge
+            anchors {
+                right: parent.right
+                verticalCenter: parent.verticalCenter
+                rightMargin: Dims.iconButtonMargin
+            }
             iconName: "ios-arrow-dropright"
             onClicked: if (mprisManager.canGoNext) mprisManager.next()
         }
 
         IconButton {
             id: volDownButton
-            edge: undefinedEdge
             anchors.left: parent.left
             anchors.leftMargin: Dims.w(16)
             anchors.bottom: parent.bottom
@@ -178,7 +184,6 @@ Application {
 
         IconButton {
             id: volUpButton
-            edge: undefinedEdge
             anchors.right: parent.right
             anchors.rightMargin: Dims.w(16)
             anchors.bottom: parent.bottom
