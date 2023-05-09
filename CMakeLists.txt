@@ -19,6 +19,13 @@ ecm_find_qmlmodule(org.nemomobile.mpris 1.0)
 
 add_subdirectory(src)
 
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/asteroid-music.in
+	${CMAKE_BINARY_DIR}/asteroid-music
+	@ONLY)
+
+install(PROGRAMS ${CMAKE_BINARY_DIR}/asteroid-music
+	DESTINATION ${CMAKE_INSTALL_BINDIR})
+
 build_translations(i18n)
 generate_desktop(${CMAKE_SOURCE_DIR} asteroid-music)
 
