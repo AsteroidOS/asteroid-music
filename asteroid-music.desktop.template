@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Categories=Applications;
-Exec=invoker --single-instance --type=qtcomponents-qt5 /usr/bin/asteroid-music
+Exec=asteroid-music
 Icon=ios-musical-notes-outline
 X-Asteroid-Center-Color=#2577B3
 X-Asteroid-Outer-Color=#000619
