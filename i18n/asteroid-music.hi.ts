@@ -6,12 +6,12 @@
     <message id="id-no-data-sync">
         <location filename="../src/main.qml" line="50"/>
         <source>&lt;h3&gt;No data&lt;/h3&gt;Sync AsteroidOS with your phone.</source>
-        <translation>&lt;h3&gt;कोई डाटा उपलब्ध नहीं है&lt;/h3&gt;पने फ़ोन के साथ एस्टेरोइड ओ. एस. सिंक करें।</translation>
+        <translation>&lt;h3&gt; कोई डाटा उपलब्ध नहीं है &lt;/h3&gt;पने फ़ोन के साथ AsteroidOS सिंक करें।</translation>
     </message>
     <message id="id-app-launcher-name">
         <location filename="asteroid-music.desktop.h" line="6"/>
         <source>Music</source>
-        <translation>संगीत</translation>
+        <translation>संगीत/म्यूजिक</translation>
     </message>
 </context>
 </TS>
