@@ -4,7 +4,7 @@ set_target_properties(asteroid-music PROPERTIES PREFIX "")
 target_link_libraries(
 	asteroid-music
 	PUBLIC
-		Asteroid::AsteroidApp
+		Asteroid::AsteroidApp6
 )
 
 install(

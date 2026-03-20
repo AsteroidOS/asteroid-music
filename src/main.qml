@@ -15,10 +15,10 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import QtQuick 2.9
-import org.asteroid.controls 1.0
-import org.asteroid.utils 1.0
-import org.nemomobile.mpris 1.0
+import QtQuick
+import org.asteroid.controls
+import org.asteroid.utils
+import Amber.Mpris
 
 Application {
     id: app
@@ -26,13 +26,13 @@ Application {
     centerColor: "#2577B3"
     outerColor: "#000619"
 
-    property bool isPlaying: mprisManager.currentService && mprisManager.playbackStatus == Mpris.Playing
+    property bool isPlaying: mprisController.currentService && mprisController.playbackStatus == Mpris.Playing
     property double bufferedVolume: 0.0
 
-    onBufferedVolumeChanged: mprisManager.volume = bufferedVolume
+    onBufferedVolumeChanged: mprisController.volume = bufferedVolume
 
-    MprisManager {
-        id: mprisManager
+    MprisController {
+        id: mprisController
         onVolumeChanged: bufferedVolumeTimer.restart()
     }
 
@@ -42,7 +42,7 @@ Application {
         id: bufferedVolumeTimer
         interval: 500
         repeat: false
-        onTriggered: bufferedVolume = mprisManager.volume
+        onTriggered: bufferedVolume = mprisController.volume
     }
 
     StatusPage {
@@ -62,9 +62,9 @@ Application {
             fillMode: Image.PreserveAspectCrop
             opacity: 0.7
             source: {
-                var artTag = Mpris.metadataToString(Mpris.ArtUrl)
-                if (mprisManager.currentService && (artTag in mprisManager.metadata))
-                    return mprisManager.metadata[artTag]
+                var artTag = mprisController.metaData.artUrl
+                if (mprisController.currentService && (artTag in mprisController.metadata))
+                    return mprisController.metadata[artTag]
                 return ""
             }
         }
@@ -91,9 +91,9 @@ Application {
             width: DeviceSpecs.hasRoundScreen ? Dims.w(60) : Dims.w(80)
 
             text: {
-                var titleTag = Mpris.metadataToString(Mpris.Title)
-                if (mprisManager.currentService && (titleTag in mprisManager.metadata))
-                    return mprisManager.metadata[titleTag]
+                var titleTag = mprisController.metaData.title
+                if (mprisController.currentService && (titleTag in mprisController.metadata))
+                    return mprisController.metadata[titleTag]
                 return ""
             }
         }
@@ -107,9 +107,9 @@ Application {
             width: DeviceSpecs.hasRoundScreen ? Dims.w(70) : Dims.w(80)
 
             text: {
-                var artistTag = Mpris.metadataToString(Mpris.Artist)
-                if (mprisManager.currentService && (artistTag in mprisManager.metadata))
-                    return mprisManager.metadata[artistTag]
+                var artistTag = mprisController.metaData.artist
+                if (mprisController.currentService && (artistTag in mprisController.metadata))
+                    return mprisController.metadata[artistTag]
                 return ""
             }
         }
@@ -122,7 +122,7 @@ Application {
                 leftMargin: Dims.iconButtonMargin
             }
             iconName: "ios-arrow-dropleft"
-            onClicked: if (mprisManager.canGoPrevious) mprisManager.previous()
+            onClicked: if (mprisController.canGoPrevious) mprisController.previous()
         }
 
         IconButton {
@@ -132,10 +132,10 @@ Application {
             height: width
             iconName: isPlaying ? "ios-pause" : "ios-play"
             onClicked: {
-                if (isPlaying && mprisManager.canPause)
-                    mprisManager.pause()
-                else if (!isPlaying && mprisManager.canPlay)
-                    mprisManager.play()
+                if (isPlaying && mprisController.canPause)
+                    mprisController.pause()
+                else if (!isPlaying && mprisController.canPlay)
+                    mprisController.play()
             }
         }
 
@@ -147,7 +147,7 @@ Application {
                 rightMargin: Dims.iconButtonMargin
             }
             iconName: "ios-arrow-dropright"
-            onClicked: if (mprisManager.canGoNext) mprisManager.next()
+            onClicked: if (mprisController.canGoNext) mprisController.next()
         }
 
         IconButton {
@@ -176,7 +176,7 @@ Application {
             anchors.top: volumeSlider.top
             anchors.left: volumeSlider.left
             anchors.bottom: volumeSlider.bottom
-            width: volumeSlider.width * mprisManager.volume
+            width: volumeSlider.width * mprisController.volume
             color: "white"
             radius: 12
             opacity: 1.0
