@@ -1,5 +1,9 @@
-add_library(asteroid-music main.cpp resources.qrc)
+add_library(asteroid-music main.cpp)
 set_target_properties(asteroid-music PROPERTIES PREFIX "")
+
+asteroid_app_qml_module(asteroid-music
+	main.qml
+)
 
 target_link_libraries(
 	asteroid-music
