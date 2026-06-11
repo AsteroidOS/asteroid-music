@@ -61,12 +61,7 @@ Application {
             anchors.fill: parent
             fillMode: Image.PreserveAspectCrop
             opacity: 0.7
-            source: {
-                var artTag = mprisController.metaData.artUrl
-                if (mprisController.currentService && (artTag in mprisController.metadata))
-                    return mprisController.metadata[artTag]
-                return ""
-            }
+            source: mprisController.metaData.artUrl ? mprisController.metaData.artUrl : ""
         }
 
         Rectangle {
@@ -90,12 +85,7 @@ Application {
             height: Dims.h(10)
             width: DeviceSpecs.hasRoundScreen ? Dims.w(60) : Dims.w(80)
 
-            text: {
-                var titleTag = mprisController.metaData.title
-                if (mprisController.currentService && (titleTag in mprisController.metadata))
-                    return mprisController.metadata[titleTag]
-                return ""
-            }
+            text: mprisController.metaData.title ? mprisController.metaData.title : ""
         }
 
         Marquee {
@@ -106,12 +96,7 @@ Application {
             height: Dims.h(10)
             width: DeviceSpecs.hasRoundScreen ? Dims.w(70) : Dims.w(80)
 
-            text: {
-                var artistTag = mprisController.metaData.artist
-                if (mprisController.currentService && (artistTag in mprisController.metadata))
-                    return mprisController.metadata[artistTag]
-                return ""
-            }
+            text: mprisController.metaData.contributingArtist ? mprisController.metaData.contributingArtist : ""
         }
 
         IconButton {
