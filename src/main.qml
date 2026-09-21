@@ -96,7 +96,7 @@ Application {
             height: Dims.h(10)
             width: DeviceSpecs.hasRoundScreen ? Dims.w(70) : Dims.w(80)
 
-            text: mprisController.metaData.contributingArtist ? mprisController.metaData.contributingArtist : ""
+            text: (mprisController.metaData.contributingArtist || []).join(", ")
         }
 
         IconButton {
